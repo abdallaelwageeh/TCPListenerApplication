@@ -52,6 +52,7 @@
     <Compile Include="ChatWithClient.Designer.cs">
       <DependentUpon>ChatWithClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Encoding.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +61,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConstantData.cs" />
     <Compile Include="UiRuntimeChange.cs" />
     <EmbeddedResource Include="ChatWithClient.resx">
       <DependentUpon>ChatWithClient.cs</DependentUpon>

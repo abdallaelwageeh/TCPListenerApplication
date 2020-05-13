@@ -121,7 +121,9 @@ namespace TCPListenerApplication
                     try
                     {
                         int len = await stream.ReadAsync(byteBuffer, 0, 4000, chat.Cts.Token);
-                        var message = Encoding.ASCII.GetString(byteBuffer, 0, len);
+                        string encodingValue=chat.GetReceiveEncodingValue();
+                        var encoder = Encoding.GetEncoding(encodingValue);
+                        var message = encoder.GetString(byteBuffer, 0, len);
                         if (len==0)
                         {
                             UiRuntimeChange.Log($"Client is Closed ...\nWe Have To Close This Session...\n", LogType.Disconnect, chat.receieveArea);
@@ -144,10 +146,7 @@ namespace TCPListenerApplication
                             });
                             break;
                         }
-                        chat.receieveArea.Invoke(new Action(() => 
-                        {
-                            UiRuntimeChange.Log($"Client Send : {message}\n", LogType.Message, chat.receieveArea);
-                        }));
+                        UiRuntimeChange.Log($"Client Send : {message}\n", LogType.Message, chat.receieveArea);
                     }
                     catch (Exception Ex)
                     {
